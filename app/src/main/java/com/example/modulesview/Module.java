@@ -24,22 +24,21 @@ public class Module {
         M_Level = m_Level;
         M_CLevel = m_CLevel;
         Stream = stream;
+        SetColor();
 
 
     }
     public void SetPreRequistes(ArrayList<Module>preRequistes){
         this.preRequistes =preRequistes;
     }
-    /*public void SetColor(){
+    public void SetColor(){
         if (Stream.equals("Soft")){
-            Background =R.drawable.modulesoftware;
-            TextColor=R.color.SoftwareTextCol;
+            Background=R.color.SoftBackgrondColor;
         }
         else {
-            Background =R.drawable.modulecore;
-            TextColor=R.color.MoudleTop;
+            Background=R.color.CoreBackgrondColor;
         }
-    }*/
+    }
 
 
     //Getters

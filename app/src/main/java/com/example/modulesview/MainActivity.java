@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -29,10 +30,23 @@ public class MainActivity extends AppCompatActivity {
 
         getMoudles();
 
-        adapter= new CustomAdapater(Modules);
+        adapter= new CustomAdapater(Modules,this);
         recyclerView.setAdapter(adapter);
 
 
+    }
+    public void CardClicked(View view){
+        TextView M_Level=view.findViewById(R.id.LevelText);
+        TextView M_Stream =view.findViewById(R.id.StreamText);
+        if(M_Level.getVisibility()==View.GONE){
+            M_Level.setVisibility(View.VISIBLE);
+            M_Stream.setVisibility(View.VISIBLE);
+            adapter.notifyDataSetChanged();
+        }
+        else{
+            M_Level.setVisibility(View.GONE);
+            M_Stream.setVisibility(View.GONE);
+        }
     }
     private void getMoudles(){
         Module a=new Module(1,"Info501","Computers stuff","Where you do computers","Level 9","15","BOy");

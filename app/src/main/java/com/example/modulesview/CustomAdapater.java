@@ -1,6 +1,11 @@
 package com.example.modulesview;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
 
 public class CustomAdapater extends RecyclerView.Adapter<CustomAdapater.Holder>{
     private ArrayList<Module> Modules;
+    private Context context;
     public static class Holder extends RecyclerView.ViewHolder
     {
         TextView M_Code;
@@ -22,6 +29,9 @@ public class CustomAdapater extends RecyclerView.Adapter<CustomAdapater.Holder>{
         TextView M_Level;
         TextView M_Stream;
         CheckBox Completed;
+        CardView MoudleBox;
+
+
 
         public Holder(@NonNull View view) {
             super(view);
@@ -32,13 +42,14 @@ public class CustomAdapater extends RecyclerView.Adapter<CustomAdapater.Holder>{
             M_Level=view.findViewById(R.id.LevelText);
             M_Stream=view.findViewById(R.id.StreamText);
             Completed=view.findViewById(R.id.checkBox);
-
+            MoudleBox=view.findViewById(R.id.card_view);
 
         }
     }
 
-    public CustomAdapater(ArrayList<Module> Modules) {
+    public CustomAdapater(ArrayList<Module> Modules, Context context) {
         this.Modules=Modules;
+        this.context=context;
     }
 
     @NonNull
@@ -59,6 +70,7 @@ public class CustomAdapater extends RecyclerView.Adapter<CustomAdapater.Holder>{
         TextView M_Level= holder.M_Level;
         TextView M_Stream= holder.M_Stream;
         CheckBox Completed= holder.Completed;
+        CardView MoudleBox=holder.MoudleBox;
 
         M_name.setText(Modules.get(poss).getM_Name());
         M_Code.setText(Modules.get(poss).getM_Code());
@@ -67,9 +79,8 @@ public class CustomAdapater extends RecyclerView.Adapter<CustomAdapater.Holder>{
         M_Stream.setText(Modules.get(poss).getStream());
         M_Level.setText(Modules.get(poss).getM_Level());
         Completed.setChecked(Modules.get(poss).isPassed());
-
+        MoudleBox.setCardBackgroundColor(ContextCompat.getColor(context,Modules.get(poss).getBackground()));
     }
-
     @Override
     public int getItemCount() {
         return Modules.size();
