@@ -13,10 +13,13 @@ public class Module {
     private boolean Passed=false;//chance later
     private String Stream;
     private int Background;
-    private int TextColor;
     private boolean expaneded=false;
+    //For headers
+    private boolean header;
+    private String semestor;
 
-    public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream) {
+
+    public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,String semestor,boolean head) {
         this.M_ID=M_ID;
         M_Code = m_Code;
         M_Name = m_Name;
@@ -24,8 +27,9 @@ public class Module {
         M_Level = m_Level;
         M_CLevel = m_CLevel;
         Stream = stream;
+        this.semestor=semestor;
+        this.header=head;
         SetColor();
-
 
     }
     public void SetPreRequistes(ArrayList<Module>preRequistes){
@@ -52,9 +56,6 @@ public class Module {
     public int getBackground() {
         return Background;
     }
-    public int getTextColor() {
-        return TextColor;
-    }
     public long getM_ID() {
         return M_ID;
     }
@@ -79,6 +80,14 @@ public class Module {
     public String getStream() {
         return Stream;
     }
+
+    public boolean isHeader() {
+        return header;
+    }
+
+    public String getSemestor() {
+        return semestor;
+    }
     //Setters
 
     public void setM_Code(String m_Code) {
@@ -91,5 +100,9 @@ public class Module {
 
     public void setPassed(boolean passed) {
         Passed = passed;
+    }
+
+    public void setHeader(boolean header) {
+        this.header = header;
     }
 }
