@@ -28,7 +28,6 @@ public class EditModulesActivity extends AppCompatActivity {
         erecyclerView.setLayoutManager(elayoutManager);
         erecyclerView.setItemAnimator(new DefaultItemAnimator());
         editadapter=new EditCustomAdapater(this,Modules);
-
         erecyclerView.setAdapter(editadapter);
     }
     public void EditCardClicked(View view){
