@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -42,7 +43,10 @@ public class ViewModulesActivity extends AppCompatActivity {
     public void CardClicked(View view){
         TextView M_Level=view.findViewById(R.id.LevelText);
         TextView M_Stream =view.findViewById(R.id.StreamText);
+        TextView M_Code=view.findViewById(R.id.MoudleCodeText);
+        Log.d("DebugTest","CardClicked"+M_Code.getText());
         if(M_Level.getVisibility()==View.GONE){
+            Log.d("DebugTest","CardClicked"+M_Code.getText());
             M_Level.setVisibility(View.VISIBLE);
             M_Stream.setVisibility(View.VISIBLE);
             adapter.notifyDataSetChanged();

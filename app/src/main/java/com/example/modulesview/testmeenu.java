@@ -20,7 +20,6 @@ public class testmeenu extends AppCompatActivity {
     }
     public void StartView(View view){
         Intent i = new Intent(this, ViewModulesActivity.class);
-        //i.putParcelableArrayListExtra("Modules",getMoudles());
         this.startActivity(i);
     }
     public void StartEdit(View view){
@@ -29,7 +28,6 @@ public class testmeenu extends AppCompatActivity {
     }
     public static ArrayList<Module> getMoudles(){
         ArrayList<Module> Modules= new ArrayList<>();
-        Modules.add(h1);
         Module a=new Module(1,"Info501","Computers stuff","Where you do computers","Level 9","15","BOy","1",false);
         Modules.add(a);
         Module b=new Module(2,"Info502","People D","Where you do C","Level 5","15","Core","1",false);
