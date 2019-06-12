@@ -28,14 +28,14 @@ public class testmeenu extends AppCompatActivity {
     }
     public static ArrayList<Module> getMoudles(){
         ArrayList<Module> Modules= new ArrayList<>();
-        Module a=new Module(1,"Info501","Computers stuff","Where you do computers","Level 9","15","BOy","1",false);
+        Module a=new Module(1,"Info501","Computers stuff","Where you do computers","Level 9","15","Core","1",false);
         Modules.add(a);
         Module b=new Module(2,"Info502","People D","Where you do C","Level 5","15","Core","1",false);
         Modules.add(b);
         Module c=new Module(3,"Info503","Software stuff","Where you do D","Level 5","15","Core","1",false);
         Modules.add(c);
         Module d=new Module(4,"Info504","HardWare stuff","Where you do 1","Level 5","15","Soft","1",false);
-        //d.SetPreRequistes(a,b,c);
+        d.SetPreRequistes(b,a,c);
         Modules.add(d);
         Module h=new Module(5,"Info601","Computers stuff","Where you do computers","Level 5","15","Core","2",false);
         Modules.add(h);

@@ -16,10 +16,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:animationCache="false"
+        android:clickable="false"
+        android:duplicateParentState="true"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
-        android:duplicateParentState="true"
-        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,8 +28,8 @@
             android:id="@+id/cardlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:duplicateParentState="true"
             android:clickable="false"
+            android:duplicateParentState="true"
             android:padding="10dp">
 
             <TextView
@@ -121,8 +121,10 @@
                 android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/MoudleCodeText"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -131,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="PreRegs"
+                android:text="PreRegs: "
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
 

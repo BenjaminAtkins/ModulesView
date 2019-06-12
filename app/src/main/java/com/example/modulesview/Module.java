@@ -10,7 +10,7 @@ public class Module {
     private String M_Desc;
     private String M_Level;
     private String M_CLevel;
-    private ArrayList<Module> preRequistes;
+    private ArrayList<Module> preRequistes= new ArrayList<>();
     private boolean Passed=false;//chance later
     private String Stream;
     private int Background;
@@ -34,10 +34,11 @@ public class Module {
         this.header=head;
         SetColor();
     }
-    public void SetPreRequistes(Module...args){
-        if (args!=null) {
-            preRequistes.addAll(Arrays.asList(args));
-        }
+    public void SetPreRequistes(Module...Modules){
+       for (Module Module:Modules){
+           preRequistes.add(Module);
+       }
+
     }
     public void SetColor(){
         if (Stream.equals("Soft")){

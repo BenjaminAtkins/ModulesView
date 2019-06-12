@@ -84,6 +84,11 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
             M_Desc.setText(module.getM_Desc());
             M_Stream.setText(module.getStream());
             M_Level.setText(module.getM_Level());
+            if (module.getPrereqs().size()!=0) {//If Preregs does not = 0
+                for (int i=0;i<module.getPrereqs().size();i++) {
+                    PreRegs.append(module.getPrereqs().get(i).getM_Code()+" ");
+                }
+            }
             Completed.setChecked(module.isPassed());
             MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
         if (module.isExpanded()){
