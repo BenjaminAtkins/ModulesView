@@ -35,7 +35,7 @@ public class testmeenu extends AppCompatActivity {
         Module c=new Module(3,"Info503","Software stuff","Where you do D","Level 5","15","Core","1",false);
         Modules.add(c);
         Module d=new Module(4,"Info504","HardWare stuff","Where you do 1","Level 5","15","Soft","1",false);
-        d.SetPreRequistes(a,b,c);
+        //d.SetPreRequistes(a,b,c);
         Modules.add(d);
         Module h=new Module(5,"Info601","Computers stuff","Where you do computers","Level 5","15","Core","2",false);
         Modules.add(h);

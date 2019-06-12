@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.modulesview.Module;
 import com.example.modulesview.R;
@@ -32,25 +32,25 @@ public class ViewModulesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator( new DefaultItemAnimator());
 
-
-
-        adapter= new ViewCustomAdapater(Modules,this);
+        adapter= new ViewCustomAdapater(Modules,this,new ViewCustomAdapater.OnModuleClickListener(){
+            @Override
+            public void onItemClick(Module module) {
+                //Toast.makeText(this, "Item Clicked", Toast.LENGTH_SHORT).show();
+                Log.d("ItemClickDebug","ItemClicked"+module.getM_Code());
+                if(module.isExpanded()){
+                    module.setExpanded(false);
+                    adapter.notifyDataSetChanged();
+                }
+                else{
+                    module.setExpanded(true);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
         recyclerView.setAdapter(adapter);
 
 
     }
-    public void CardClicked(View view){
-        TextView M_Level=view.findViewById(R.id.LevelText);
-        TextView M_Stream =view.findViewById(R.id.StreamText);
-        if(M_Level.getVisibility()==View.GONE){
-            M_Level.setVisibility(View.VISIBLE);
-            M_Stream.setVisibility(View.VISIBLE);
-            adapter.notifyDataSetChanged();
-        }
-        else{
-            M_Level.setVisibility(View.GONE);
-            M_Stream.setVisibility(View.GONE);
-        }
-    }
+
 
 }

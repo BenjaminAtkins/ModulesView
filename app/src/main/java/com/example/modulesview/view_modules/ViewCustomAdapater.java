@@ -3,6 +3,7 @@ package com.example.modulesview.view_modules;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +22,35 @@ import java.util.ArrayList;
 public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.Holder>{
     private ArrayList<Module> Modules;
     private Context context;
+    public interface OnModuleClickListener {
+        void onItemClick(Module module);
+    }
+    private final OnModuleClickListener listener;
+
+
+    public ViewCustomAdapater(ArrayList<Module> Modules, Context context,OnModuleClickListener listener) {
+        this.Modules=Modules;
+        this.context=context;
+        this.listener=listener;
+    }
+    @NonNull
+    @Override
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.module_view_layout, parent, false);
+        //view.setOnClickListener();
+        Holder holder = new Holder(view, 0);
+        return holder;
+
+    }
+    @Override
+    public void onBindViewHolder(@NonNull Holder holder, int poss) {
+            holder.bind(Modules.get(poss),listener);
+
+    }
+    @Override
+    public int getItemCount() {
+        return Modules.size();
+    }
     public static class Holder extends RecyclerView.ViewHolder
     {
         TextView M_Code;
@@ -33,84 +63,45 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
         CheckBox Completed;
         CardView MoudleBox;
         TextView HeadCode;
-        int Type;
 
         public Holder(@NonNull View view,int type) {
             super(view);
-            this.Type=type;
-            if (type==0) {
-                M_Code = view.findViewById(R.id.MoudleCodeText);
-                M_name = view.findViewById(R.id.NameText);
-                M_Clevel = view.findViewById(R.id.CreditsText);
-                M_Desc = view.findViewById(R.id.descriptionText);
-                M_Level = view.findViewById(R.id.LevelText);
-                M_Stream = view.findViewById(R.id.StreamText);
-                Completed = view.findViewById(R.id.checkBox);
-                MoudleBox = view.findViewById(R.id.card_view);
-                PreRegs=view.findViewById(R.id.PreRequistesText);
-            }
-            else{
-                HeadCode=view.findViewById(R.id.SemestorText);
-            }
-
+            M_Code = view.findViewById(R.id.MoudleCodeText);
+            M_name = view.findViewById(R.id.NameText);
+            M_Clevel = view.findViewById(R.id.CreditsText);
+            M_Desc = view.findViewById(R.id.descriptionText);
+            M_Level = view.findViewById(R.id.LevelText);
+            M_Stream = view.findViewById(R.id.StreamText);
+            Completed = view.findViewById(R.id.checkBox);
+            MoudleBox = view.findViewById(R.id.card_view);
+            PreRegs=view.findViewById(R.id.PreRequistesText);
         }
-    }
 
-    public ViewCustomAdapater(ArrayList<Module> Modules, Context context) {
-        this.Modules=Modules;
-        this.context=context;
-    }
-    @NonNull
-    @Override
-    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        if (Modules.get(i).isHeader()){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.headerlayout, parent, false);
-            //view.setOnClickListener();
-            Holder holder = new Holder(view, 1);
-            return holder;
+
+    public void bind(final Module module, final OnModuleClickListener listener ){
+            M_name.setText(module.getM_Name());M_Code.setText(module.getM_Code());
+            M_Clevel.setText(module.getM_CLevel());
+            M_Desc.setText(module.getM_Desc());
+            M_Stream.setText(module.getStream());
+            M_Level.setText(module.getM_Level());
+            Completed.setChecked(module.isPassed());
+            MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
+        if (module.isExpanded()){
+            M_Level.setVisibility(View.VISIBLE);
+            M_Stream.setVisibility(View.VISIBLE);
         }
         else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.module_view_layout, parent, false);
-            //view.setOnClickListener();
-            Holder holder = new Holder(view, 0);
-            return holder;
+            M_Level.setVisibility(View.GONE);
+            M_Stream.setVisibility(View.GONE);
         }
-    }
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(module);
 
-    @Override
-    public void onBindViewHolder(@NonNull Holder holder, int poss) {
-        if (holder.Type==0) {
-            TextView M_Code = holder.M_Code;
-            TextView M_name = holder.M_name;
-            TextView M_Clevel = holder.M_Clevel;
-            TextView M_Desc = holder.M_Desc;
-            TextView M_Level = holder.M_Level;
-            TextView M_Stream = holder.M_Stream;
-            TextView Preregs =holder.PreRegs;
-            CheckBox Completed = holder.Completed;
-            CardView MoudleBox = holder.MoudleBox;
-
-            M_name.setText(Modules.get(poss).getM_Name());
-            M_Code.setText(Modules.get(poss).getM_Code());
-            M_Clevel.setText(Modules.get(poss).getM_CLevel());
-            M_Desc.setText(Modules.get(poss).getM_Desc());
-            M_Stream.setText(Modules.get(poss).getStream());
-            M_Level.setText(Modules.get(poss).getM_Level());
-            Completed.setChecked(Modules.get(poss).isPassed());
-            MoudleBox.setCardBackgroundColor(ContextCompat.getColor(context, Modules.get(poss).getBackground()));
-            int i=0;
-            while (i<((Modules.get(poss).getPrereqs().size()))){
-                Preregs.append(Modules.get(poss).getPrereqs().get(i).getM_Code());
             }
-        }
-        else {
-            TextView SemCode=holder.HeadCode;
-            SemCode.setText("Semestor "+Modules.get(poss).getSemestor());
-        }
+        });
     }
-    @Override
-    public int getItemCount() {
-        return Modules.size();
-    }
+}
 
 }

@@ -14,10 +14,12 @@ public class Module {
     private boolean Passed=false;//chance later
     private String Stream;
     private int Background;
-    private boolean expaneded=false;
+    private boolean expanded =false;
+    private String semestor;
+    private boolean visable=false;
     //For headers
     private boolean header;
-    private String semestor;
+
 
 
     public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,String semestor,boolean head) {
@@ -49,8 +51,12 @@ public class Module {
 
     //Getters
 
-    public boolean isExpaneded() {
-        return expaneded;
+    public boolean isVisable() {
+        return visable;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
     }
     public boolean isPassed() {
         return Passed;
@@ -83,6 +89,10 @@ public class Module {
         return Stream;
     }
 
+    public void setVisable(boolean visable) {
+        this.visable = visable;
+    }
+
     public boolean isHeader() {
         return header;
     }
@@ -96,8 +106,8 @@ public class Module {
         M_Code = m_Code;
     }
 
-    public void setExpaneded(boolean expaneded) {
-        this.expaneded = expaneded;
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 
     public void setPassed(boolean passed) {

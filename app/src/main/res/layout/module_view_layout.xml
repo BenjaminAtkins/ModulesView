@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#00AC1B1B"
     tools:context=".view_modules.ViewModulesActivity">
 
 
@@ -15,9 +16,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:animationCache="false"
-        android:onClick="CardClicked"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
+        android:duplicateParentState="true"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,6 +28,8 @@
             android:id="@+id/cardlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:duplicateParentState="true"
+            android:clickable="false"
             android:padding="10dp">
 
             <TextView
