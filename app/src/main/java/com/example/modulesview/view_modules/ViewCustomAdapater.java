@@ -29,13 +29,11 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
         TextView M_Desc;
         TextView M_Level;
         TextView M_Stream;
+        TextView PreRegs;
         CheckBox Completed;
         CardView MoudleBox;
         TextView HeadCode;
         int Type;
-
-
-
 
         public Holder(@NonNull View view,int type) {
             super(view);
@@ -49,6 +47,7 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
                 M_Stream = view.findViewById(R.id.StreamText);
                 Completed = view.findViewById(R.id.checkBox);
                 MoudleBox = view.findViewById(R.id.card_view);
+                PreRegs=view.findViewById(R.id.PreRequistesText);
             }
             else{
                 HeadCode=view.findViewById(R.id.SemestorText);
@@ -87,6 +86,7 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
             TextView M_Desc = holder.M_Desc;
             TextView M_Level = holder.M_Level;
             TextView M_Stream = holder.M_Stream;
+            TextView Preregs =holder.PreRegs;
             CheckBox Completed = holder.Completed;
             CardView MoudleBox = holder.MoudleBox;
 
@@ -98,6 +98,10 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
             M_Level.setText(Modules.get(poss).getM_Level());
             Completed.setChecked(Modules.get(poss).isPassed());
             MoudleBox.setCardBackgroundColor(ContextCompat.getColor(context, Modules.get(poss).getBackground()));
+            int i=0;
+            while (i<((Modules.get(poss).getPrereqs().size()))){
+                Preregs.append(Modules.get(poss).getPrereqs().get(i).getM_Code());
+            }
         }
         else {
             TextView SemCode=holder.HeadCode;

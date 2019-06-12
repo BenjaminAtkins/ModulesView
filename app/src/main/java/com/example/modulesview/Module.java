@@ -1,6 +1,7 @@
 package com.example.modulesview;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Module {
     private long   M_ID;
@@ -30,10 +31,11 @@ public class Module {
         this.semestor=semestor;
         this.header=head;
         SetColor();
-
     }
-    public void SetPreRequistes(ArrayList<Module>preRequistes){
-        this.preRequistes =preRequistes;
+    public void SetPreRequistes(Module...args){
+        if (args!=null) {
+            preRequistes.addAll(Arrays.asList(args));
+        }
     }
     public void SetColor(){
         if (Stream.equals("Soft")){
@@ -105,4 +107,6 @@ public class Module {
     public void setHeader(boolean header) {
         this.header = header;
     }
+
+
 }
