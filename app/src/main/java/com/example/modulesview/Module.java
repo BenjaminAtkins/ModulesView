@@ -11,6 +11,7 @@ public class Module {
     private String M_Level;
     private String M_CLevel;
     private ArrayList<Module> preRequistes= new ArrayList<>();
+    private String PreRegsText="PreRegs";
     private boolean Passed=false;//chance later
     private String Stream;
     private int Background;
@@ -37,8 +38,8 @@ public class Module {
     public void SetPreRequistes(Module...Modules){
        for (Module Module:Modules){
            preRequistes.add(Module);
+           PreRegsText+=" "+Module.getM_Code();
        }
-
     }
     public void SetColor(){
         if (Stream.equals("Soft")){
@@ -51,6 +52,10 @@ public class Module {
 
 
     //Getters
+
+    public String getPreRegsText() {
+        return PreRegsText;
+    }
 
     public boolean isVisable() {
         return visable;

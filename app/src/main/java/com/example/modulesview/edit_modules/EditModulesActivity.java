@@ -1,13 +1,17 @@
-package com.example.modulesview;
+package com.example.modulesview.edit_modules;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.example.modulesview.Module;
+import com.example.modulesview.R;
+import com.example.modulesview.testmeenu;
 
 import java.util.ArrayList;
 
@@ -21,14 +25,28 @@ public class EditModulesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_modules);
-        Modules=testmeenu.getMoudles();
+        Modules= testmeenu.getMoudles();
 
         erecyclerView=findViewById(R.id.R_Edit_View);
         erecyclerView.setHasFixedSize(true);
         elayoutManager= new GridLayoutManager(this,2);
         erecyclerView.setLayoutManager(elayoutManager);
         erecyclerView.setItemAnimator(new DefaultItemAnimator());
-        editadapter=new EditCustomAdapater(this,Modules);
+        editadapter=new EditCustomAdapater(this,Modules,new EditCustomAdapater.OnModuleEditClickListener(){
+            @Override
+            public void onItemClick(Module module) {
+                //Toast.makeText(this, "Item Clicked", Toast.LENGTH_SHORT).show();
+                Log.d("ItemClickDebug","ItemClicked"+module.getM_Code());
+                if(module.isExpanded()){
+                    module.setExpanded(false);
+                    editadapter.notifyDataSetChanged();
+                }
+                else{
+                    module.setExpanded(true);
+                    editadapter.notifyDataSetChanged();
+                }
+            }
+        });
 
         erecyclerView.setAdapter(editadapter);
     }

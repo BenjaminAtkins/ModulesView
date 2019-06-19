@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorGrey">#817F7F</color>
-    <color name="CoreBackgrondColor">#C5B0B0</color>
-    <color name="SoftBackgrondColor">#4A69F3</color>
+    <color name="CoreBackgrondColor">#C5B0B0</color>--Temp
+    <color name="SoftBackgrondColor">#4A69F3</color>--Temp
+
 </resources>

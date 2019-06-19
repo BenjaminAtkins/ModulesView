@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.modulesview.edit_modules.EditModulesActivity;
 import com.example.modulesview.view_modules.ViewModulesActivity;
 
 import java.util.ArrayList;

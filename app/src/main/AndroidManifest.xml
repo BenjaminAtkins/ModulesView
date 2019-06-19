@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
 
         <activity android:name=".testmeenu">
             <intent-filter>
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view_modules.ViewModulesActivity" />
-        <activity android:name=".EditModulesActivity"></activity>
+        <activity android:name=".edit_modules.EditModulesActivity"></activity>
     </application>
 
 </manifest>

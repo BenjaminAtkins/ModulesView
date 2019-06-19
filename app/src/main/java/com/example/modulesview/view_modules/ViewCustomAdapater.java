@@ -26,8 +26,6 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
         void onItemClick(Module module);
     }
     private final OnModuleClickListener listener;
-
-
     public ViewCustomAdapater(ArrayList<Module> Modules, Context context,OnModuleClickListener listener) {
         this.Modules=Modules;
         this.context=context;
@@ -63,7 +61,6 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
         CheckBox Completed;
         CardView MoudleBox;
         TextView HeadCode;
-
         public Holder(@NonNull View view,int type) {
             super(view);
             M_Code = view.findViewById(R.id.MoudleCodeText);
@@ -76,21 +73,19 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
             MoudleBox = view.findViewById(R.id.card_view);
             PreRegs=view.findViewById(R.id.PreRequistesText);
         }
-
-
     public void bind(final Module module, final OnModuleClickListener listener ){
             M_name.setText(module.getM_Name());M_Code.setText(module.getM_Code());
             M_Clevel.setText(module.getM_CLevel());
             M_Desc.setText(module.getM_Desc());
             M_Stream.setText(module.getStream());
             M_Level.setText(module.getM_Level());
-            if (module.getPrereqs().size()!=0) {//If Preregs does not = 0
-                for (int i=0;i<module.getPrereqs().size();i++) {
-                    PreRegs.append(module.getPrereqs().get(i).getM_Code()+" ");
-                }
-            }
             Completed.setChecked(module.isPassed());
             MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
+            if (module.getPrereqs().size()>0) {//If Preregs does not = 0
+                for (int i=0;i<module.getPrereqs().size();i++) {
+                    PreRegs.setText(module.getPreRegsText());
+                }
+            }
         if (module.isExpanded()){
             M_Level.setVisibility(View.VISIBLE);
             M_Stream.setVisibility(View.VISIBLE);
@@ -109,4 +104,4 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
     }
 }
 
-}
+}//end of class
