@@ -10,7 +10,7 @@
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapsingToolbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         app:contentScrim="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -35,7 +35,7 @@
         android:layout_marginBottom="8dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_ViewStudentModules_Save"
-        app:layout_constraintTop_toBottomOf="@+id/collapsingToolbarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
         tools:layout_editor_absoluteX="0dp" />
 <!--Buttons Bottom-->
     <Button
@@ -82,6 +82,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_ViewStudentModules_Save" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FFDD00"
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dialog"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/collapsingToolbarLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/collapsingToolbarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/collapsingToolbarLayout" />
 
 </android.support.constraint.ConstraintLayout>
 

@@ -1,5 +1,7 @@
 package com.example.modulesview;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,18 +14,16 @@ public class Module {
     private String M_CLevel;
     private ArrayList<Module> preRequistes= new ArrayList<>();
     private String PreRegsText="PreRegs";
-    private boolean Passed=false;//chance later
+    private boolean Passed=false;
     private String Stream;
     private int Background;
+    private boolean Unlocked=true;
     private boolean expanded =false;
-    private String semestor;
+    private int semestor;
     private boolean visable=false;
     //For headers
     private boolean header;
-
-
-
-    public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,String semestor,boolean head) {
+    public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,int semestor,boolean head) {
         this.M_ID=M_ID;
         M_Code = m_Code;
         M_Name = m_Name;
@@ -38,20 +38,31 @@ public class Module {
     public void SetPreRequistes(Module...Modules){
        for (Module Module:Modules){
            preRequistes.add(Module);
-           PreRegsText+=" "+Module.getM_Code();
+           this.PreRegsText+=" "+Module.getM_Code();
        }
     }
     public void SetColor(){
-        if (Stream.equals("Soft")){
-            Background=R.color.SoftBackgrondColor;
+        if (Stream.equals("Network")){
+            Background=R.color.NetCardViewColor;
         }
-        else {
-            Background=R.color.CoreBackgrondColor;
+        else if (Stream.equals("Mutimedia")){
+            Background=R.color.MutliCardViewColor;
+        }
+        else if (Stream.equals("Database")){
+            Background=R.color.DataCardViewColor;
+        }
+        else if (Stream.equals("Software")){
+            Background=R.color.SoftCardViewColor;
+        }
+        else if (Stream.equals("Core")){
+            Background=R.color.CoreCardViewColor;
         }
     }
-
-
     //Getters
+
+    public boolean isUnlocked() {
+        return Unlocked;
+    }
 
     public String getPreRegsText() {
         return PreRegsText;
@@ -103,7 +114,7 @@ public class Module {
         return header;
     }
 
-    public String getSemestor() {
+    public int getSemestor() {
         return semestor;
     }
     //Setters
@@ -124,5 +135,7 @@ public class Module {
         this.header = header;
     }
 
-
+    public void setUnlocked(boolean unlocked) {
+        Unlocked = unlocked;
+    }
 }

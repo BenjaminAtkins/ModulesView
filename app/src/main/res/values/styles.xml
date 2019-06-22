@@ -7,5 +7,19 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--Module Cards Styles -->
+    <style name="SoftwareModuleLook" parent="CardView">
+        <item name="cardBackgroundColor">@color/softwareBackground</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:backgroundTint">@color/softwareBackgroundDark</item>
+        <item name="android:backgroundTintMode">multiply</item>
+    </style>
+    <style name="databaseLook" parent="CardView">
+        <item name="cardBackgroundColor">@color/databaseBackground</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:backgroundTint">@color/databaseBackgroundDark</item>
+        <item name="android:backgroundTintMode">multiply</item>
+    </style>
+
 
 </resources>

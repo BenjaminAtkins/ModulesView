@@ -4,7 +4,26 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorGrey">#817F7F</color>
-    <color name="CoreBackgrondColor">#C5B0B0</color>--Temp
-    <color name="SoftBackgrondColor">#4A69F3</color>--Temp
+
+    <color name="networkBackground">#FDE1FF</color>
+    <color name="networkBackgroundDark">#e3c9e5</color>
+    <color name="NetCardViewColor">#DEAFE3</color>
+
+    <color name="wintecLightGrey">#5C000000</color>
+
+    <color name="softwareBackground">#E1EAFF</color>
+    <color name="softwareBackgroundDark">#C9D2E5</color>
+    <color name="SoftCardViewColor">#AFBDE3</color>
+
+    <color name="databaseBackground">#CCFFCC</color>
+    <color name="databaseBackgroundDark">#b7e5b7</color>
+    <color name="DataCardViewColor">#FF90E291</color>
+
+    <color name="multimediaBackground">#FFE1E1</color>
+    <color name="multimediaBackgroundDark">#e5c9c9</color>
+    <color name="MutliCardViewColor">#E2AFB0</color>
+
+    <color name="CoreCardViewColor">#DFD2BE</color>
+    <color name="CardViewLockedBackground">#FF3F3F40</color>
 
 </resources>
