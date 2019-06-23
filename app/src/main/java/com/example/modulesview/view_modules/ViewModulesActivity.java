@@ -1,15 +1,10 @@
 package com.example.modulesview.view_modules;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -61,11 +56,17 @@ public class ViewModulesActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
             }
-        }, new ViewCustomAdapater.UpdateSemestor() {
+        }, new ViewCustomAdapater.UpdateData() {
             @Override
             public int onUpdate(int Semestor) {
                 Semestor=getSemestor();
                 return Semestor;
+            }
+
+            @Override
+            public ArrayList<Module> UpdateModules(ArrayList<Module> Modules) {
+                setModules(Modules);
+                return getModules();
             }
         },new ViewCustomAdapater.OnCheckBoxClickListener(){
             @Override
@@ -88,7 +89,6 @@ public class ViewModulesActivity extends AppCompatActivity {
                 Semestor=i;
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -99,4 +99,15 @@ public class ViewModulesActivity extends AppCompatActivity {
         return Semestor;
     }
 
+    public ArrayList<Module> getModules() {
+        return Modules;
+    }
+
+    public void SaveStudentModules(View view){
+
+    }
+
+    public void setModules(ArrayList<Module> modules) {
+        Modules = modules;
+    }
 }//end of view modules class

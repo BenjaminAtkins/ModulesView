@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Module {
-    private long   M_ID;
     private String M_Code;
     private String M_Name;
     private String M_Desc;
@@ -23,8 +22,7 @@ public class Module {
     private boolean visable=false;
     //For headers
     private boolean header;
-    public Module(long M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,int semestor,boolean head) {
-        this.M_ID=M_ID;
+    public Module(String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,int semestor,boolean head) {
         M_Code = m_Code;
         M_Name = m_Name;
         M_Desc = m_Desc;
@@ -80,9 +78,6 @@ public class Module {
     }
     public int getBackground() {
         return Background;
-    }
-    public long getM_ID() {
-        return M_ID;
     }
     public String getM_Code() {
         return M_Code;

@@ -1,20 +1,16 @@
 package com.example.modulesview.view_modules;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -35,18 +31,23 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
     public interface OnModuleClickListener {
         void onItemClick(Module module);
     }
-    public interface UpdateSemestor{
+    public interface UpdateData {
         int onUpdate(int Semestor);
+        ArrayList<Module> UpdateModules(ArrayList<Module> Modules);
+
     }
     private final OnModuleClickListener listener;
     private final OnCheckBoxClickListener checkBoxlistener;
-    private static UpdateSemestor Update;
-    public ViewCustomAdapater(ArrayList<Module> Modules, Context context, int Semestor,OnModuleClickListener listener,UpdateSemestor Update,OnCheckBoxClickListener checkBoxlistener) {
+    private static UpdateData Update;
+    public ViewCustomAdapater(ArrayList<Module> Modules, Context context, int Semestor, OnModuleClickListener listener, UpdateData Update, OnCheckBoxClickListener checkBoxlistener) {
         this.Modules=Modules;
         this.context=context;
         this.listener=listener;
         ViewCustomAdapater.Update =Update;
         this.checkBoxlistener=checkBoxlistener;
+    }
+    public ArrayList<Module> getModules() {
+        return Modules;
     }
 
     @NonNull
@@ -59,6 +60,7 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
     }
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int poss) {
+            Modules=Update.UpdateModules(Modules);
             holder.bind(Modules.get(poss),listener,checkBoxlistener);
 
     }
@@ -154,8 +156,7 @@ public class ViewCustomAdapater extends RecyclerView.Adapter<ViewCustomAdapater.
             LockIcon.setVisibility(View.VISIBLE);
         }
     }
-
-
 }//end of holderclass
+
 
 }//end of class

@@ -20,13 +20,14 @@ public class EditModulesActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager elayoutManager;
     private static RecyclerView erecyclerView;
     private ArrayList<Module> Modules;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_modules);
         Modules= testmeenu.getMoudles();
-
+        for (int i=0;i<Modules.size();i++){
+            Modules.get(i).setExpanded(true);
+        }
         erecyclerView=findViewById(R.id.R_Edit_View);
         erecyclerView.setHasFixedSize(true);
         elayoutManager= new GridLayoutManager(this,2);
@@ -35,8 +36,6 @@ public class EditModulesActivity extends AppCompatActivity {
         editadapter=new EditCustomAdapater(this,Modules,new EditCustomAdapater.OnModuleEditClickListener(){
             @Override
             public void onItemClick(Module module) {
-                //Toast.makeText(this, "Item Clicked", Toast.LENGTH_SHORT).show();
-                Log.d("ItemClickDebug","ItemClicked"+module.getM_Code());
                 if(module.isExpanded()){
                     module.setExpanded(false);
                     editadapter.notifyDataSetChanged();
@@ -47,7 +46,6 @@ public class EditModulesActivity extends AppCompatActivity {
                 }
             }
         });
-
         erecyclerView.setAdapter(editadapter);
     }
     public void EditCardClicked(View view){
