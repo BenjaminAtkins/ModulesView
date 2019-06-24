@@ -38,13 +38,18 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
         ArrayList<Module> UpdateModules(ArrayList<Module> Modules);
 
     }
+    public interface TextChanged{
+        void afterTextChanged(Module module,String Text, EditText TextTochange,String Thingtochange);//IE Module,Text that has been inputted,Thing that has been changed,The Moudle thing to change
+    }
     private final OnModuleEditClickListener listener;
     private static UpdateData Update;
-    public EditCustomAdapater( Context context,ArrayList<Module> modules,OnModuleEditClickListener listener,UpdateData update) {
+    private final  TextChanged textChangedListener;
+    public EditCustomAdapater( Context context,ArrayList<Module> modules,OnModuleEditClickListener listener,UpdateData update,TextChanged textChangedListener) {
         Modules = modules;
         this.context = context;
         this.listener=listener;
         this.Update=update;
+        this.textChangedListener=textChangedListener;
     }
 
     @NonNull
@@ -58,7 +63,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Modules=Update.UpdateModules(Modules);
-        viewHolder.bind(Modules.get(i),listener);
+        viewHolder.bind(Modules.get(i),listener,textChangedListener);
 
     }
 
@@ -95,7 +100,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
         }
 
 
-            public void bind(final Module module, final OnModuleEditClickListener listener ){
+            public void bind(final Module module, final OnModuleEditClickListener listener,TextChanged textChanged ){
                 M_Code.setText(module.getM_Code());
                 M_name.setText(module.getM_Name());
                 M_Clevel.setText(module.getM_CLevel());
@@ -145,7 +150,6 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                         listener.onItemClick(module);
                     }
                 });
-
                 //All the text watchs so it can be saved
                 M_Code.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
@@ -198,27 +202,83 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                 M_Preg1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
+                        Module editedprereg=testmeenu.FindModule(Modules,M_Preg1.getText().toString());
                         if (!hasFocus){
-
+                            if (editedprereg!=null) {
+                                if (module.getPrereqs().size() != 0) {
+                                    if(module.getPrereqs().size() == 1) {
+                                        module.SetPreRequistes(editedprereg);
+                                    }
+                                    if (module.getPrereqs().size() == 2) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1));
+                                    }
+                                    if (module.getPrereqs().size() == 3) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1),module.getPrereqs().get(2));
+                                    }
+                                }
+                                else {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                            }
+                            else {
+                                Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                            }
                         }
                     }
                 });
                 M_Preg2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
+                        Module editedprereg=testmeenu.FindModule(Modules,M_Preg2.getText().toString());
                         if (!hasFocus){
-
+                            if (editedprereg!=null) {
+                                if (module.getPrereqs().size() != 0) {
+                                    if(module.getPrereqs().size() == 1) {
+                                        module.SetPreRequistes(editedprereg);
+                                    }
+                                    if (module.getPrereqs().size() == 2) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1));
+                                    }
+                                    if (module.getPrereqs().size() == 3) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1),module.getPrereqs().get(2));
+                                    }
+                                }
+                                else {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                            }
+                            else {
+                                Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                            }
                         }
                     }
                 });
                 M_Preg3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
+                        Module editedprereg=testmeenu.FindModule(Modules,M_Preg3.getText().toString());
                         if (!hasFocus){
-
+                            if (editedprereg!=null) {
+                                if (module.getPrereqs().size() != 0) {
+                                    if(module.getPrereqs().size() == 1) {
+                                        module.SetPreRequistes(editedprereg);
+                                    }
+                                    if (module.getPrereqs().size() == 2) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1));
+                                    }
+                                    if (module.getPrereqs().size() == 3) {
+                                        module.SetPreRequistes(editedprereg,module.getPrereqs().get(1),module.getPrereqs().get(2));
+                                    }
+                                }
+                                else {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                            }
+                            else {
+                                Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                            }
                         }
                     }
-                    
                 });
                 MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
             }
