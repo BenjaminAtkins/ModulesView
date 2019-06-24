@@ -147,210 +147,78 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                 });
 
                 //All the text watchs so it can be saved
-                M_Code.addTextChangedListener(new TextWatcher() {
+                M_Code.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setM_Code(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_name.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setM_Name(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_Clevel.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setM_CLevel(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_Desc.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setM_Desc(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_Stream.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setStream(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_Level.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        module.setM_Level(editable.toString());
-                        Modules=Update.UpdateModules(Modules);
-                    }
-                });
-                M_Preg1.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
-                        if (editedprereg!=null) {
-                            if (module.getPrereqs().size() != 0) {
-                                if(module.getPrereqs().size() == 1) {
-                                    module.SetPreRequistes(editedprereg);
-                                }
-                                if (module.getPrereqs().size() == 2) {
-                                    module.SetPreRequistes(editedprereg,module.getPrereqs().get(1));
-                                }
-                                if (module.getPrereqs().size() == 3) {
-                                    module.SetPreRequistes(editedprereg,module.getPrereqs().get(1),module.getPrereqs().get(2));
-                                }
-                            }
-                            else {
-                                module.SetPreRequistes(editedprereg);
-                            }
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setM_Code(M_Code.getText().toString());
                         }
-                        else {
-                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
-                        }
-                        Modules=Update.UpdateModules(Modules);
                     }
                 });
-                M_Preg2.addTextChangedListener(new TextWatcher() {
+                M_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
-                        if (editedprereg!=null) {
-                            if (module.getPrereqs().size() != 0) {
-                                if(module.getPrereqs().size() == 1) {
-                                    module.SetPreRequistes(editedprereg);
-                                }
-                                if (module.getPrereqs().size() == 2) {
-                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg);
-                                }
-                                if (module.getPrereqs().size() == 3) {
-                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg,module.getPrereqs().get(1));
-                                }
-                            }
-                            else {
-                                module.SetPreRequistes(editedprereg);
-                            }
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setM_Name(M_name.getText().toString());
                         }
-                        else {
-                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
-                        }
-                        Modules=Update.UpdateModules(Modules);
                     }
                 });
-                M_Preg3.addTextChangedListener(new TextWatcher() {
+                M_Clevel.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
-                        if (editedprereg!=null) {
-                            if (module.getPrereqs().size() != 0) {
-                                if(module.getPrereqs().size() == 1) {
-                                    module.SetPreRequistes(editedprereg);
-                                }
-                                if (module.getPrereqs().size() == 2) {
-                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg);
-                                }
-                                if (module.getPrereqs().size() == 3) {
-                                    module.SetPreRequistes(module.getPrereqs().get(0),module.getPrereqs().get(1),editedprereg);
-                                }
-                            }
-                            else {
-                                module.SetPreRequistes(editedprereg);
-                            }
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setM_CLevel(M_Clevel.getText().toString());
                         }
-                        else {
-                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
-                        }
-                        Modules=Update.UpdateModules(Modules);
                     }
+                });
+                M_Desc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setM_Desc(M_Desc.getText().toString());
+                        }
+                    }
+                });
+                M_Stream.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setStream(M_Stream.getText().toString());
+                        }
+                    }
+                });
+                M_Level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+                            module.setM_Level(M_Level.getText().toString());
+                        }
+                    }
+                });
+                M_Preg1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+
+                        }
+                    }
+                });
+                M_Preg2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+
+                        }
+                    }
+                });
+                M_Preg3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus){
+
+                        }
+                    }
+                    
                 });
                 MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
             }
