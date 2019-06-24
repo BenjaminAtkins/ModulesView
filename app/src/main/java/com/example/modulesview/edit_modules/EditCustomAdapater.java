@@ -27,10 +27,13 @@ import static com.example.modulesview.testmeenu.FindModule;
 public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.ViewHolder>{
     private static ArrayList<Module> Modules;
     private Context context;
+    private static int Semestor;
     public interface OnModuleEditClickListener {
+
         void onItemClick(Module module);
     }
     public interface UpdateData {
+        int onUpdate();
         ArrayList<Module> UpdateModules(ArrayList<Module> Modules);
 
     }
@@ -118,6 +121,13 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                         listener.onItemClick(module);
                     }
                 });
+                Semestor=Update.onUpdate();
+                if (module.getSemestor()!=Semestor&&Semestor!=0){
+                    MoudleBox.setVisibility(View.GONE);
+                }
+                else {
+                    MoudleBox.setVisibility(View.VISIBLE);
+                }
                 //All the text watchs so it can be saved
                 M_Code.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -127,7 +137,6 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
 
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
                     }
 
                     @Override
