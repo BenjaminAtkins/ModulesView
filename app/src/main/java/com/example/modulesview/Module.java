@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class Module {
+    private int M_ID;
     private String M_Code;
     private String M_Name;
     private String M_Desc;
@@ -21,7 +22,7 @@ public class Module {
     private boolean visable=false;
     //For headers
     private boolean header;
-    public Module(String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,int semestor,boolean head) {
+    public Module(int M_ID,String m_Code, String m_Name, String m_Desc, String m_Level, String m_CLevel, String stream,int semestor,boolean head) {
         M_Code = m_Code;
         M_Name = m_Name;
         M_Desc = m_Desc;
@@ -30,6 +31,7 @@ public class Module {
         Stream = stream;
         this.semestor=semestor;
         this.header=head;
+        this.M_ID=M_ID;
         SetColor();
     }
     public void SetPreRequistes(Module...Modules){

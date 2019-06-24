@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.example.modulesview.Module;
@@ -26,7 +27,7 @@ import static com.example.modulesview.testmeenu.FindModule;
 
 public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.ViewHolder>{
     private static ArrayList<Module> Modules;
-    private Context context;
+    private static Context context;
     private static int Semestor;
     public interface OnModuleEditClickListener {
 
@@ -122,8 +123,6 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     M_Preg2.setText("PreReg");
                     M_Preg3.setText("PreReg");
                 }
-
-                MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
                 //Expanding the module if needed
                 if (module.isExpanded()){
                     M_Level.setVisibility(View.VISIBLE);
@@ -133,14 +132,6 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     M_Level.setVisibility(View.GONE);
                     M_Stream.setVisibility(View.GONE);
                 }
-
-
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        listener.onItemClick(module);
-                    }
-                });
                 Semestor=Update.onUpdate();
                 if (module.getSemestor()!=Semestor&&Semestor!=0){
                     MoudleBox.setVisibility(View.GONE);
@@ -148,6 +139,13 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                 else {
                     MoudleBox.setVisibility(View.VISIBLE);
                 }
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        listener.onItemClick(module);
+                    }
+                });
+
                 //All the text watchs so it can be saved
                 M_Code.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -162,6 +160,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setM_Code(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_name.addTextChangedListener(new TextWatcher() {
@@ -178,6 +177,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setM_Name(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Clevel.addTextChangedListener(new TextWatcher() {
@@ -194,6 +194,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setM_CLevel(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Desc.addTextChangedListener(new TextWatcher() {
@@ -210,6 +211,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setM_Desc(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Stream.addTextChangedListener(new TextWatcher() {
@@ -226,6 +228,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setStream(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Level.addTextChangedListener(new TextWatcher() {
@@ -242,6 +245,7 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     @Override
                     public void afterTextChanged(Editable editable) {
                         module.setM_Level(editable.toString());
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Preg1.addTextChangedListener(new TextWatcher() {
@@ -274,6 +278,10 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                                 module.SetPreRequistes(editedprereg);
                             }
                         }
+                        else {
+                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                        }
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Preg2.addTextChangedListener(new TextWatcher() {
@@ -304,6 +312,10 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                                 module.SetPreRequistes(editedprereg);
                             }
                         }
+                        else {
+                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                        }
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
                 M_Preg3.addTextChangedListener(new TextWatcher() {
@@ -334,8 +346,14 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                                 module.SetPreRequistes(editedprereg);
                             }
                         }
+                        else {
+                            Toast.makeText(context,"Module Does Not Exitst",Toast.LENGTH_LONG);
+                        }
+                        Modules=Update.UpdateModules(Modules);
                     }
                 });
+                MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
             }
     }
+
 }

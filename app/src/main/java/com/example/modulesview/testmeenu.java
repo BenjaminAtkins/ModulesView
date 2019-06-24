@@ -1,9 +1,11 @@
 package com.example.modulesview;
 
+import android.app.Application;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.modulesview.edit_modules.EditModulesActivity;
 import com.example.modulesview.view_modules.ViewModulesActivity;
@@ -27,16 +29,16 @@ public class testmeenu extends AppCompatActivity {
     //Will be load Data from Database
     public static ArrayList<Module> getMoudles(){
         ArrayList<Module> Modules= new ArrayList<>();
-        Module a=new Module("Info501","Computers stuff","Where you do computers","Level 9","15","Core",1,false);
-        Module b=new Module("Info502","People D","Where you do C","Level 5","15","Core",1,false);
-        Module c=new Module("Info503","Software stuff","Where you do D","Level 5","15","Software",2,false);
-        Module d=new Module("Info504","HardWare stuff","Where you do 1","Level 5","15","Software",2,false);
-        Module h=new Module("Info601","Computers stuff","Where you do computers","Level 5","15","Network",3,false);
-        Module g=new Module("Info602","People D","Where you do C","Level 5","15","Network",3,false);
-        Module f=new Module("Comp601","Software stuff","Where you do D","Level 5","15","Mutimedia",4,false);
-        Module e=new Module("Comp602","HardWare stuff","Where you do 1","Level 5","15","Mutimedia",4,false);
-        Module z=new Module("Comp701","Software stuff","Where you do D","Level 5","15","Database",5,false);
-        Module y=new Module("Info701","HardWare stuff","Where you do 1","5","15","Database",5,false);
+        Module a=new Module(1,"Info501","Computers stuff","Where you do computers","Level 9","15","Core",1,false);
+        Module b=new Module(2,"Info502","People D","Where you do C","Level 5","15","Core",1,false);
+        Module c=new Module(3,"Info503","Software stuff","Where you do D","Level 5","15","Software",2,false);
+        Module d=new Module(4,"Info504","HardWare stuff","Where you do 1","Level 5","15","Software",2,false);
+        Module h=new Module(5,"Info601","Computers stuff","Where you do computers","Level 5","15","Network",3,false);
+        Module g=new Module(6,"Info602","People D","Where you do C","Level 5","15","Network",3,false);
+        Module f=new Module(7,"Comp601","Software stuff","Where you do D","Level 5","15","Mutimedia",4,false);
+        Module e=new Module(8,"Comp602","HardWare stuff","Where you do 1","Level 5","15","Mutimedia",4,false);
+        Module z=new Module(9,"Comp701","Software stuff","Where you do D","Level 5","15","Database",5,false);
+        Module y=new Module(10,"Info701","HardWare stuff","Where you do 1","5","15","Database",5,false);
         //Settting preReqs for modules
         d.SetPreRequistes(b,a,c);
         a.SetPreRequistes(y,z);
@@ -62,6 +64,7 @@ public class testmeenu extends AppCompatActivity {
                 return Modules.get(i);
             }
         }
+
         return null;
     }
 }
