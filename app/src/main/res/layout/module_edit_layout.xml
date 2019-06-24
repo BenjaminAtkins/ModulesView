@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="EditCardClicked"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +22,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false">
+
+            <EditText
+                android:id="@+id/preReg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="textPersonName"
+                android:text="Comp702"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DescEdit"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/CodeEdit"
@@ -41,9 +55,7 @@
                 android:id="@+id/nameEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
-                android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +65,7 @@
                 android:id="@+id/CreditsEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Credits"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,12 +75,10 @@
                 android:id="@+id/StreamEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Stream"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/CreditsEdit" />
 
@@ -78,12 +86,10 @@
                 android:id="@+id/LevelEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Level"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/StreamEdit" />
 
@@ -91,13 +97,42 @@
                 android:id="@+id/DescEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Descrpition"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/LevelEdit" />
+
+            <EditText
+                android:id="@+id/PreReg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="textPersonName"
+                android:text="Comp502"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/preReg2"
+                app:layout_constraintStart_toEndOf="@+id/preReg"
+                app:layout_constraintTop_toBottomOf="@+id/DescEdit"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/preReg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="textPersonName"
+                android:text="Info601"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DescEdit" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

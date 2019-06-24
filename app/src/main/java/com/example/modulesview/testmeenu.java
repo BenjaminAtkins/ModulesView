@@ -57,7 +57,7 @@ public class testmeenu extends AppCompatActivity {
     }
     //For Adding Preregs with the actucal data
     public static Module FindModule(ArrayList<Module> Modules,String M_Code){
-        for (int i=0;i<=Modules.size();i++){
+        for (int i=0;i<=Modules.size()-1;i++){
             if (Modules.get(i).getM_Code().equals(M_Code)){
                 return Modules.get(i);
             }

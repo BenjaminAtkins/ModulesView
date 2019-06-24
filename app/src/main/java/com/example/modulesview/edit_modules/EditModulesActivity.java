@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class EditModulesActivity extends AppCompatActivity {
     private static RecyclerView.Adapter editadapter;
     private RecyclerView.LayoutManager elayoutManager;
-    private static RecyclerView erecyclerView;
+    private  RecyclerView erecyclerView;
     private ArrayList<Module> Modules;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,32 +33,27 @@ public class EditModulesActivity extends AppCompatActivity {
         elayoutManager= new GridLayoutManager(this,2);
         erecyclerView.setLayoutManager(elayoutManager);
         erecyclerView.setItemAnimator(new DefaultItemAnimator());
-        editadapter=new EditCustomAdapater(this,Modules,new EditCustomAdapater.OnModuleEditClickListener(){
+        editadapter=new EditCustomAdapater(this, Modules, new EditCustomAdapater.OnModuleEditClickListener() {
             @Override
             public void onItemClick(Module module) {
-                if(module.isExpanded()){
+                if (module.isExpanded()) {
                     module.setExpanded(false);
                     editadapter.notifyDataSetChanged();
-                }
-                else{
+                } else {
                     module.setExpanded(true);
                     editadapter.notifyDataSetChanged();
                 }
             }
+        }, new EditCustomAdapater.UpdateData() {
+            @Override
+            public ArrayList<Module> UpdateModules(ArrayList<Module> Mod) {
+                Modules=Mod;
+                return Modules;
+            }
         });
         erecyclerView.setAdapter(editadapter);
     }
-    public void EditCardClicked(View view){
-        EditText M_Level=view.findViewById(R.id.LevelEdit);
-        EditText M_Stream =view.findViewById(R.id.StreamEdit);
-        if(M_Level.getVisibility()==View.GONE){
-            M_Level.setVisibility(View.VISIBLE);
-            M_Stream.setVisibility(View.VISIBLE);
-            editadapter.notifyDataSetChanged();
-        }
-        else{
-            M_Level.setVisibility(View.GONE);
-            M_Stream.setVisibility(View.GONE);
-        }
+    public void SaveStudentModules(View view){
+        Log.d("SaveDebug",Modules.get(0).getM_Code());
     }
 }

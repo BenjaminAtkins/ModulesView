@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ViewModulesActivity extends AppCompatActivity {
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private static RecyclerView recyclerView;
+    private  RecyclerView recyclerView;
     private ArrayList<Module> Modules;
     private int Semestor=0;
 
@@ -104,6 +104,7 @@ public class ViewModulesActivity extends AppCompatActivity {
     }
 
     public void SaveStudentModules(View view){
+        //get Modules for here and save to databse
 
     }
 

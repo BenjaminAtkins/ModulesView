@@ -3,7 +3,6 @@ package com.example.modulesview;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Module {
     private String M_Code;
@@ -34,12 +33,15 @@ public class Module {
         SetColor();
     }
     public void SetPreRequistes(Module...Modules){
+        preRequistes.clear();//Clear for makes editing nicer
        for (Module Module:Modules){
-           preRequistes.add(Module);
-           this.PreRegsText+=" "+Module.getM_Code();
+           if (Module!=null) {
+               preRequistes.add(Module);
+               this.PreRegsText += " " + Module.getM_Code();
+           }
        }
     }
-    public void SetColor(){
+    private void SetColor(){
         if (Stream.equals("Network")){
             Background=R.color.NetCardViewColor;
         }
@@ -132,5 +134,33 @@ public class Module {
 
     public void setUnlocked(boolean unlocked) {
         Unlocked = unlocked;
+    }
+
+    public void setM_Name(String m_Name) {
+        M_Name = m_Name;
+    }
+
+    public void setM_Desc(String m_Desc) {
+        M_Desc = m_Desc;
+    }
+
+    public void setM_Level(String m_Level) {
+        M_Level = m_Level;
+    }
+
+    public void setM_CLevel(String m_CLevel) {
+        M_CLevel = m_CLevel;
+    }
+
+    public void setPreRequistes(ArrayList<Module> preRequistes) {
+        this.preRequistes = preRequistes;
+    }
+
+    public void setStream(String stream) {
+        Stream = stream;
+    }
+
+    public void setSemestor(int semestor) {
+        this.semestor = semestor;
     }
 }
