@@ -102,6 +102,26 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                 M_Stream.setText(module.getStream());
                 M_Level.setText(module.getM_Level());
                 //setting the prereg text
+                if (module.getPrereqs().size()!=0) {
+                        M_Preg1.setText(module.getPrereqs().get(0).getM_Code());
+                        if (module.getPrereqs().size()>1){
+                            M_Preg2.setText(module.getPrereqs().get(1).getM_Code());
+                        }
+                        else {
+                            M_Preg2.setText("PreReg");
+                        }
+                        if (module.getPrereqs().size()==3){
+                            M_Preg3.setText(module.getPrereqs().get(2).getM_Code());
+                        }
+                        else{
+                            M_Preg3.setText("PreReg");
+                        }
+                }
+                else{
+                    M_Preg1.setText("PreReg");
+                    M_Preg2.setText("PreReg");
+                    M_Preg3.setText("PreReg");
+                }
 
                 MoudleBox.setCardBackgroundColor(ContextCompat.getColor(itemView.getContext(), module.getBackground()));
                 //Expanding the module if needed
@@ -239,7 +259,20 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     public void afterTextChanged(Editable editable) {
                         Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
                         if (editedprereg!=null) {
-                            module.SetPreRequistes(editedprereg, module.getPrereqs().get(1), module.getPrereqs().get(2));
+                            if (module.getPrereqs().size() != 0) {
+                                if(module.getPrereqs().size() == 1) {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                                if (module.getPrereqs().size() == 2) {
+                                    module.SetPreRequistes(editedprereg,module.getPrereqs().get(1));
+                                }
+                                if (module.getPrereqs().size() == 3) {
+                                    module.SetPreRequistes(editedprereg,module.getPrereqs().get(1),module.getPrereqs().get(2));
+                                }
+                            }
+                            else {
+                                module.SetPreRequistes(editedprereg);
+                            }
                         }
                     }
                 });
@@ -248,17 +281,28 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                     }
-
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                     }
-
                     @Override
                     public void afterTextChanged(Editable editable) {
                         Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
                         if (editedprereg!=null) {
-                            module.SetPreRequistes(module.getPrereqs().get(0), editedprereg, module.getPrereqs().get(2));
+                            if (module.getPrereqs().size() != 0) {
+                                if(module.getPrereqs().size() == 1) {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                                if (module.getPrereqs().size() == 2) {
+                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg);
+                                }
+                                if (module.getPrereqs().size() == 3) {
+                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg,module.getPrereqs().get(1));
+                                }
+                            }
+                            else {
+                                module.SetPreRequistes(editedprereg);
+                            }
                         }
                     }
                 });
@@ -267,19 +311,28 @@ public class EditCustomAdapater extends RecyclerView.Adapter<EditCustomAdapater.
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                     }
-
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                     }
-
                     @Override
                     public void afterTextChanged(Editable editable) {
                         Module editedprereg= testmeenu.FindModule(Modules,editable.toString());
                         if (editedprereg!=null) {
-                            Module pre1=module.getPrereqs().get(0);
-                            Module pre2=module.getPrereqs().get(1);
-                            module.SetPreRequistes(pre1,pre2, editedprereg);
+                            if (module.getPrereqs().size() != 0) {
+                                if(module.getPrereqs().size() == 1) {
+                                    module.SetPreRequistes(editedprereg);
+                                }
+                                if (module.getPrereqs().size() == 2) {
+                                    module.SetPreRequistes(module.getPrereqs().get(0),editedprereg);
+                                }
+                                if (module.getPrereqs().size() == 3) {
+                                    module.SetPreRequistes(module.getPrereqs().get(0),module.getPrereqs().get(1),editedprereg);
+                                }
+                            }
+                            else {
+                                module.SetPreRequistes(editedprereg);
+                            }
                         }
                     }
                 });
