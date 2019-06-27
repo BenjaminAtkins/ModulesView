@@ -117,51 +117,39 @@ public class Module {
         return semestor;
     }
     //Setters
-
     public void setM_Code(String m_Code) {
         M_Code = m_Code;
     }
-
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
-
     public void setPassed(boolean passed) {
         Passed = passed;
     }
-
     public void setHeader(boolean header) {
         this.header = header;
     }
-
     public void setUnlocked(boolean unlocked) {
         Unlocked = unlocked;
     }
-
     public void setM_Name(String m_Name) {
         M_Name = m_Name;
     }
-
     public void setM_Desc(String m_Desc) {
         M_Desc = m_Desc;
     }
-
     public void setM_Level(String m_Level) {
         M_Level = m_Level;
     }
-
     public void setM_CLevel(String m_CLevel) {
         M_CLevel = m_CLevel;
     }
-
     public void setPreRequistes(ArrayList<Module> preRequistes) {
         this.preRequistes = preRequistes;
     }
-
     public void setStream(String stream) {
         Stream = stream;
     }
-
     public void setSemestor(int semestor) {
         this.semestor = semestor;
     }
